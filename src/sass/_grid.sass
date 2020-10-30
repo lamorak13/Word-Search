@@ -1,0 +1,44 @@
+.grid-container
+    display: flex
+    justify-content: center
+    gap: 20px
+    padding: 0 10%
+
+    &.column
+        flex-direction: column
+        align-items: center
+
+    .words-list
+        list-style: none
+
+    .finished
+        width: 400px
+        max-width: 100%
+
+.grid
+    display: inline-grid
+    outline: solid 1px black
+
+    &__cell
+        display: flex
+        justify-content: center
+        align-items: center
+        outline: solid 1px black
+        transition: 200ms background-color ease-out
+        user-select: none
+
+        &.search
+            background-color: #ef233c
+
+        &.finished
+            background-color: #1dcfcc
+
+        &.current
+            background-color: #f86d70
+
+@media screen and ( max-width: 650px )
+    .grid-container
+        flex-direction: column
+
+        .grid
+            margin: 0 auto

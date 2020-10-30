@@ -1,0 +1,40 @@
+.ms-Callout-main
+    padding: 20px 40px
+    flex-direction: column
+    display: grid
+    gap: 10px
+    grid-template-columns: repeat(2, 1fr)
+
+    h1
+        grid-column-end: span 2
+
+    p
+        grid-column-end: span 2
+        margin-bottom: 20px
+
+    .previous
+        grid-column-start: 1
+
+    .next
+        grid-column-start: 2
+
+    .circle-container
+        grid-column-end: span 2
+        display: flex
+        gap: 20px
+        justify-content: center
+        align-items: center
+        margin-top: 20px
+
+        .circle
+            width: 3px
+            height: 3px
+            background-color: #1682e0
+            border-radius: 50%
+            opacity: .85
+
+            &.active
+                width: 5px
+                height: 5px
+                background-color: pruple
+                box-shadow: 0 0 5px 0 #1682e0
