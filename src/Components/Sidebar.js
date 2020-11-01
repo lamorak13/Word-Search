@@ -12,7 +12,7 @@ function Sidebar(props) {
         return () => {
             window.removeEventListener("keydown", closeOnEsc)
         }
-    }, [closeOnEsc])
+    })
 
     
 
