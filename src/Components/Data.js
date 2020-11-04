@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Grid from './Grid';
 import Nav from './Nav';
-import Sidebar from "./Sidebar"
+// import Sidebar from "./Sidebar"
 import Onboarding from "./Onboarding"
+import Sidebar from "./Panel"
 
 
 function Data() {

@@ -1,22 +1,15 @@
-import React, {useEffect} from 'react'
-import {Callout, DefaultButton, PrimaryButton} from "@fluentui/react"
+import React from 'react'
+import {Callout, DefaultButton, DirectionalHint, PrimaryButton} from "@fluentui/react"
 
 function OnboardingCallout(props) {
-    const {setSidebarActive} = props
-    const {active, setActive, previous, next, number, target} = props
+    const {active, setActive, previous, next, number, target, openNext, openPrev, closeNext, closePrev, setSidebarActive} = props
 
     let circles = []
 
-    for(let i=1; i<=4; i++) {
+    for(let i=1; i<=9; i++) {
         circles.push(<div className={`circle ${i === number && "active"}`} key={i}></div>)
     }
 
-    useEffect(() => {
-        if(setSidebarActive) {
-            if(active) setSidebarActive(true)
-            else setSidebarActive(false)
-        }
-    }, [setSidebarActive, active])
 
     return (
         <> 
@@ -26,7 +19,10 @@ function OnboardingCallout(props) {
         onDismiss={()=> setActive(false)}
         target={target}
         gapSpace={10}
-        >
+        calloutWidth={window.innerWidth -50}
+        calloutMaxWidth={500}
+        directionalHint={DirectionalHint.topCenter}
+        > 
             {props.children}
 
             <DefaultButton onClick={()=> previousStep()} className="previous" disabled={previous ? false : true}>
@@ -52,13 +48,17 @@ function OnboardingCallout(props) {
     )
 
     function nextStep() {
-            setActive(false)
-            next(true)        
+        if(openNext) {setSidebarActive(true)}
+        else if(closeNext) setSidebarActive(false)
+        setActive(false)
+         next(true)        
     }
 
     function previousStep() {
-            setActive(false)
-            previous(true)
+        if(openPrev) {setSidebarActive(true)}
+        else if(closePrev) setSidebarActive(false)
+        setActive(false)
+        previous(true)
     }
 }
 

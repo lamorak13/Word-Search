@@ -40,11 +40,10 @@ function Grid(props) {
         }}
         onMouseDown={()=> setActive(true)}
         onMouseUp={()=> endCurrentSearch()}
-        onMouseLeave={()=> endCurrentSearch()}
         >
         {elements}
       </div>
-      <ul className="words-list">
+      <ul id="searched-words" className="words-list">
         {wordsElements}
       </ul>
       </>

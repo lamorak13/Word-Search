@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {SpinButton, Checkbox, TextField, FontIcon} from "@fluentui/react"
+import {SpinButton, Checkbox, TextField, FontIcon, Panel} from "@fluentui/react"
 
 function Sidebar(props) {
     const {size, setSize, sidebarActive, setSidebarActive, setGrid, backwards, setBackwards, orientations, setOrientations, possibleChars, setPossibleChars, words, setWords, deleteWord, resetColor} = props
@@ -19,14 +19,19 @@ function Sidebar(props) {
     const elements = words.map((el, id) => (
         <li className='word-list__item' key={id}>
           {el}
-          <FontIcon iconName="ErrorBadge" onClick={()=>deleteWord(id)} style={{fontSize: "14px"}}></FontIcon>
+          <FontIcon iconName="Cancel" onClick={()=>deleteWord(id)} style={{fontSize: "10px"}}></FontIcon>
         </li>
       ));
 
     return (
-    <div className={sidebarActive ? "sidebar active": "sidebar"} id="sidebar">
-        <h1>Word Puzzle Settings</h1>
-        <FontIcon iconName="ChromeClose" onClick={()=> setSidebarActive(!sidebarActive)} className="close-btn" />
+    <Panel 
+    isOpen={sidebarActive} 
+    hasCloseButton={true}
+    isLightDismiss={false}
+    isBlocking={false}
+    onDismiss={()=> setSidebarActive(false)}
+    >
+        <h1 id="sidebar">Word Puzzle Settings</h1>
         <SpinButton
         id="grid-dimensions"
         label="Grid dimensions"
@@ -51,9 +56,9 @@ function Sidebar(props) {
     </ul>
     <form onSubmit={(e)=> {e.preventDefault(); addWordHandler()}} className="form">
     <TextField name="addWord" value={addWord} onChange={(e)=>setAddWord(e.target.value.toUpperCase())} ></TextField>
-    <FontIcon iconName="BoxAdditionSolid" onClick={()=> addWordHandler() } style={{fontSize: "30px", cursor: "pointer"}}></FontIcon>
+    <FontIcon iconName="ToDoLogoOutline" onClick={()=> addWordHandler() } style={{fontSize: "30px", cursor: "pointer"}}></FontIcon>
     </form>
-    </div>
+    </Panel>
     )
 
     function orientationHandler(e) {

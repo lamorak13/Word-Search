@@ -9,7 +9,7 @@ function Nav(props) {
       <PrimaryButton className='start' onClick={() => wordFind()}>
         Start Puzzle
       </PrimaryButton>
-      <PrimaryButton className='solve' onClick={() => solvePuzzle()}>
+      <PrimaryButton className='solve' id="solve" onClick={() => solvePuzzle()}>
         Solve
       </PrimaryButton>
       <PrimaryButton className='clear' onClick={() => clearGrid()}>
@@ -19,7 +19,7 @@ function Nav(props) {
             <FontIcon iconName="Help" style={{fontSize: "16px"}}></FontIcon>
             Help
         </PrimaryButton>
-      <PrimaryButton className='button' onClick={()=> setSidebarActive(!sidebarActive)}> 
+      <PrimaryButton className='button' id="settings" onClick={()=> setSidebarActive(!sidebarActive)}> 
       <FontIcon iconName="Settings" style={{fontSize: "16px"}}></FontIcon>
       <p>Settings</p>
       </PrimaryButton>
